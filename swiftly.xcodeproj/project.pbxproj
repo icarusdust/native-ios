@@ -16,6 +16,9 @@
 		0ACE648A24E4224B0016C533 /* swiftlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE648924E4224B0016C533 /* swiftlyTests.swift */; };
 		0ACE649524E4224B0016C533 /* swiftlyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE649424E4224B0016C533 /* swiftlyUITests.swift */; };
 		23515124BD6E1A3B4D0A1482 /* Pods_swiftly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EAFD65183689E6BFB1CDF18 /* Pods_swiftly.framework */; };
+		3681BE34274FBB79008BC952 /* MyScene.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 3681BE33274FBB79008BC952 /* MyScene.rcproject */; };
+		3681BE35274FBB79008BC952 /* MyScene.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 3681BE33274FBB79008BC952 /* MyScene.rcproject */; };
+		3681BE36274FBB79008BC952 /* MyScene.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 3681BE33274FBB79008BC952 /* MyScene.rcproject */; };
 		7ACE8417B17F871533D6BF2C /* Pods_swiftlyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF27E29FA5621A61EFA96F3 /* Pods_swiftlyTests.framework */; };
 		871BC3A37CADD7033CA9094A /* Pods_swiftly_swiftlyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEB80E2ECA4C91262B134344 /* Pods_swiftly_swiftlyUITests.framework */; };
 /* End PBXBuildFile section */
@@ -53,6 +56,7 @@
 		0ACE649424E4224B0016C533 /* swiftlyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftlyUITests.swift; sourceTree = "<group>"; };
 		0ACE649624E4224B0016C533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		283A46686316F8B15263856D /* Pods-swiftlyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftlyTests.debug.xcconfig"; path = "Target Support Files/Pods-swiftlyTests/Pods-swiftlyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3681BE33274FBB79008BC952 /* MyScene.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = MyScene.rcproject; sourceTree = SOURCE_ROOT; };
 		3FF27E29FA5621A61EFA96F3 /* Pods_swiftlyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiftlyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		598075D6C5F322AF6B941B1C /* Pods-swiftly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftly.release.xcconfig"; path = "Target Support Files/Pods-swiftly/Pods-swiftly.release.xcconfig"; sourceTree = "<group>"; };
 		8246C50739D7C0713A9B8D95 /* Pods-swiftly-swiftlyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftly-swiftlyUITests.release.xcconfig"; path = "Target Support Files/Pods-swiftly-swiftlyUITests/Pods-swiftly-swiftlyUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 		0ACE647124E422430016C533 /* swiftly */ = {
 			isa = PBXGroup;
 			children = (
+				3681BE33274FBB79008BC952 /* MyScene.rcproject */,
 				0ACE647224E422430016C533 /* AppDelegate.swift */,
 				0ACE647424E422430016C533 /* SceneDelegate.swift */,
 				0ACE647624E422430016C533 /* ContentView.swift */,
@@ -382,6 +387,7 @@
 				0ACE647324E422430016C533 /* AppDelegate.swift in Sources */,
 				0ACE647524E422430016C533 /* SceneDelegate.swift in Sources */,
 				0ACE647724E422430016C533 /* ContentView.swift in Sources */,
+				3681BE34274FBB79008BC952 /* MyScene.rcproject in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0ACE648A24E4224B0016C533 /* swiftlyTests.swift in Sources */,
+				3681BE35274FBB79008BC952 /* MyScene.rcproject in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0ACE649524E4224B0016C533 /* swiftlyUITests.swift in Sources */,
+				3681BE36274FBB79008BC952 /* MyScene.rcproject in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
