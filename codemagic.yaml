@@ -30,6 +30,9 @@ workflows:
             include: true
             source: true
       scripts:
+        - name: Pod inst
+          script: |
+              pod install
         - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
           script: |
             keychain initialize
