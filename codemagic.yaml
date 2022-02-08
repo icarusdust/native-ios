@@ -1,6 +1,7 @@
 workflows:
     ios-workflow:
       name: iOS Workflow
+      instance_type: mac_pro
       environment:
         groups:
            - ios
