@@ -19,17 +19,17 @@ workflows:
           XCODE_SCHEME: "swiftly" # <-- Put the name of your scheme here.
           BUNDLE_ID: "io.codemagic.cmswiftly" # <-- Put your Bundle Id here.
           # APP_STORE_APP_ID: 1555555551 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
-        xcode: latest
+        xcode: 13.3
         cocoapods: default
-      triggering:
-        events:
-          - push
-          - tag
-          - pull_request
-        branch_patterns:
-          - pattern: 'develop'
-            include: true
-            source: true
+#       triggering:
+#         events:
+#           - push
+#           - tag
+#           - pull_request
+#         branch_patterns:
+#           - pattern: 'develop'
+#             include: true
+#             source: true
       scripts:
         - name: Pod inst
           script: |
