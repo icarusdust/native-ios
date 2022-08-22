@@ -1,92 +1,65 @@
-# workflows:
-#     ios-workflow:
-#       name: iOS Workflow
-#       instance_type: mac_pro
-#       environment:
-#         groups:
-#            - ios
-#         # # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-#         #   - app_store_credentials # <-- (APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
-#         #     # APP_STORE_CONNECT_ISSUER_ID <-- Put your App Store Connect Issuer Id here 
-#         #     # APP_STORE_CONNECT_KEY_IDENTIFIER <-- Put your App Store Connect Key Identifier here 
-#         #     # APP_STORE_CONNECT_PRIVATE_KEY <-- Put your App Store Connect Private Key here
-#         #     # See the following link for more details - https://docs.codemagic.io/code-signing-yaml/signing-ios/
-#         #     # https://appstoreconnect.apple.com/access/api
-#         #   - certificate_credentials # <-- (CERTIFICATE_PRIVATE_KEY - Put your Certificate Private Key here)
-#         #   - other
-#         vars:
-#           XCODE_WORKSPACE: "swiftly.xcworkspace" # <-- Put the name of your workspace here.
-#           XCODE_SCHEME: "swiftly" # <-- Put the name of your scheme here.
-#           BUNDLE_ID: "io.codemagic.cmswiftly" # <-- Put your Bundle Id here.
-#           # APP_STORE_APP_ID: 1555555551 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
-#         xcode: 13.3
-#         cocoapods: default
-# #       triggering:
-# #         events:
-# #           - push
-# #           - tag
-# #           - pull_request
-# #         branch_patterns:
-# #           - pattern: 'develop'
-# #             include: true
-# #             source: true
-#       scripts:
-#         - name: Pod inst
-#           script: |
-#               pod install
-#         - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-#           script: |
-#             keychain initialize
-#         - name: Fetch signing files
-#           script: |
-#             app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --create
-#         - name: Use system default keychain
-#           script: |
-#             keychain add-certificates
-#         - name: Set up code signing settings on Xcode project
-#           script: |
-#             xcode-project use-profiles
-#         - name: Increment build number
-#           script: |
-#             #!/bin/sh
-#             set -e
-#             set -x
-#             cd $FCI_BUILD_DIR
-#             # agvtool new-version -all $(($BUILD_NUMBER + 1))
-#             agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1))
-#         - name: Build ipa for distribution
-#           script: |
-#             xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
-#       artifacts:
-#         - build/ios/ipa/*.ipa
-#         - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-
-
-
-
 workflows:
-    simulator-native-ios:
-        name: iOS simulator build
-        max_build_duration: 120
-        instance_type: mac_pro
-        environment:
-            vars:
-               XCODE_WORKSPACE: "swiftly.xcworkspace" # <-- Put the name of your Xcode workspace here
-               XCODE_SCHEME: "swiftly" # <-- Put the name of your Xcode scheme here
-            xcode: 13.0
-            cocoapods: default
-        scripts:
-            - name: Install CocoaPods dependencies
-              script: |
-                 pod install
-            - name: Build ipa for distribution
-              script: |
-                 xcodebuild build -workspace "$XCODE_WORKSPACE" -scheme "$XCODE_SCHEME" CODE_SIGN_INDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+    ios-workflow:
+      name: iOS Workflow
+      instance_type: mac_pro
+      environment:
+        groups:
+           - ios
+        # # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
+        #   - app_store_credentials # <-- (APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
+        #     # APP_STORE_CONNECT_ISSUER_ID <-- Put your App Store Connect Issuer Id here 
+        #     # APP_STORE_CONNECT_KEY_IDENTIFIER <-- Put your App Store Connect Key Identifier here 
+        #     # APP_STORE_CONNECT_PRIVATE_KEY <-- Put your App Store Connect Private Key here
+        #     # See the following link for more details - https://docs.codemagic.io/code-signing-yaml/signing-ios/
+        #     # https://appstoreconnect.apple.com/access/api
+        #   - certificate_credentials # <-- (CERTIFICATE_PRIVATE_KEY - Put your Certificate Private Key here)
+        #   - other
+        vars:
+          XCODE_WORKSPACE: "swiftly.xcworkspace" # <-- Put the name of your workspace here.
+          XCODE_SCHEME: "swiftly" # <-- Put the name of your scheme here.
+          BUNDLE_ID: "io.codemagic.cmswiftly" # <-- Put your Bundle Id here.
+          # APP_STORE_APP_ID: 1555555551 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
+        xcode: 13.3
+        cocoapods: default
+#       triggering:
+#         events:
+#           - push
+#           - tag
+#           - pull_request
+#         branch_patterns:
+#           - pattern: 'develop'
+#             include: true
+#             source: true
+      scripts:
+        - name: Pod inst
+          script: |
+              pod install
+        - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+          script: |
+            keychain initialize
+        - name: Fetch signing files
+          script: |
+            app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --create
+        - name: Use system default keychain
+          script: |
+            keychain add-certificates
+        - name: Set up code signing settings on Xcode project
+          script: |
+            xcode-project use-profiles
+        - name: Increment build number
+          script: |
+            #!/bin/sh
+            set -e
+            set -x
+            cd $FCI_BUILD_DIR
+            # agvtool new-version -all $(($BUILD_NUMBER + 1))
+            agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1))
+        - name: Build ipa for distribution
+          script: |
+            xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+      artifacts:
+        - build/ios/ipa/*.ipa
+        - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
 
-#             xcodebuild build -workspace "$XCODE_WORKSPACE" -scheme "$XCODE_SCHEME" -sdk iphonesimulator -configuration Debug CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO 
-        artifacts:
-            - /tmp/xcodebuild_logs/*.log
-            - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
-            - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
 
 
