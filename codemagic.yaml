@@ -33,6 +33,7 @@ workflows:
       scripts:
         - name: Pod inst
           script: |
+              echo $CERTIFICATE_PRIVATE_KEY
               pod install
         - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
           script: |
